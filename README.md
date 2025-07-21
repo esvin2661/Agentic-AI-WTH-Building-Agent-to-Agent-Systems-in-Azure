@@ -1,6 +1,6 @@
 # 🤖 Esvin: WTH Agentic AI (Agent-to-Agent in Microsoft Azure)
 
-This project explores the design and implementation of a **multi-agent system** that autonomously monitors cloud infrastructure, detects anomalies, optimizes resource usage, and coordinates actions through **Agent-to-Agent (A2A)** communication. Built on **Microsoft Azure**, the system leverages **graph-based workflows** to enable intelligent, distributed decision-making across specialized agents.
+This project explores the design and implementation of **multi-agent systems** that autonomously monitor cloud infrastructure, detects anomalies, optimizes resource usage, and coordinates actions through **Agent-to-Agent (A2A)** communication. Built on **Microsoft Azure**, the system leverages **graph-based workflows** to enable intelligent, distributed decision-making across specialized agents.
 
 ---
 
