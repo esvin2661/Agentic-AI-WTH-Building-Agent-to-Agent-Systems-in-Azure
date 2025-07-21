@@ -1,62 +1,87 @@
-# 🤖 Esvin: WTH Agentic AI (Agent-to-Agent in Microsoft Azure)
+# What The Hack – Esvin: Agentic AI in Microsoft Azure
 
-This project explores the design and implementation of a **multi-agent system** that autonomously monitors cloud infrastructure, detects anomalies, optimizes resource usage, and coordinates actions through **Agent-to-Agent (A2A)** communication. Built on **Microsoft Azure**, the system leverages **graph-based workflows** to enable intelligent, distributed decision-making across specialized agents.
+## Introduction
 
----
+The Agentic AI What The Hack will guide you through designing and deploying multi-agent systems on Microsoft Azure. This systems autonomously monitors cloud infrastructure, detects anomalies, optimizes resources, and coordinates actions through Agent-to-Agent (A2A) communication.
 
-## 🔧 Core Agents
+This is a challenge-based hack. It's not step-by-step. Whether you're new to Azure or an experienced cloud architect, you'll find opportunities to learn, experiment, and innovate.
 
-- **🛰️ Monitor Agent**  
-  Continuously observes cloud metrics and service health.
+You’ll implement a distributed, intelligent system using Durable Functions, Semantic Kernel, and Azure Monitor, all orchestrated through a graph-based workflow of specialized agents.
 
-- **📉 Anomaly Detector**  
-  Identifies unusual patterns using statistical or ML models.
+And remember—coaches are here to help. Don’t hesitate to raise your hand!
 
-- **⚙️ Resource Optimizer**  
-  Recommends or triggers scaling actions to improve efficiency.
+## Learning Objectives
 
-- **🚨 Alert Manager**  
-  Notifies stakeholders and initiates remediation workflows.
+In this hack, you will:
 
----
+- Design and deploy multi-agents architecture using Azure services.
+- Implement autonomous monitoring and anomaly detection.
+- Optimize cloud resource usage through intelligent scaling.
+- Enable agent-to-agent communication for distributed decision-making.
+- Monitor and visualize system behavior using Azure Monitor and Application Insights.
 
-## 🔁 Agentic Communication
+## Solution Architecture
 
-Agents collaborate via **A2A protocols**, sharing insights and delegating tasks to maintain system resilience and performance.
+The solution is composed of four core agents, each with a specific responsibility:
 
----
+- Monitor Agent: Continuously observes cloud metrics and service health.
+- Anomaly Detector: Uses statistical or ML models to identify unusual patterns.
+- Resource Optimizer: Recommends or triggers scaling actions to improve efficiency.
+- Alert Manager: Notifies stakeholders and initiates remediation workflows.
 
-## ☁️ Built With
+These agents communicate via A2A protocols, sharing insights and delegating tasks to maintain system resilience and performance.
 
-- Microsoft Azure  
-- Durable Functions  
-- Semantic Kernel  
+The architecture is built using:
+
+- Durable Functions for orchestrating agent workflows.
+- Semantic Kernel for intelligent decision-making.
+- Azure Monitor and Application Insights for observability.
+- Python and TypeScript for implementation.
+
+## Challenges
+
+### Challenge 01: Setup
+Prepare your development environment and Azure subscription.
+
+### Challenge 02: Deploy Core Agents
+Deploy the Monitor Agent, Anomaly Detector, Resource Optimizer, and Alert Manager using Durable Functions.
+
+### Challenge 03: Enable Agentic Communication
+Implement A2A protocols to allow agents to share state and delegate tasks.
+
+### Challenge 04: Integrate Semantic Kernel
+Use Semantic Kernel to enhance agent reasoning and decision-making.
+
+### Challenge 05: Monitor and Visualize
+Configure Azure Monitor and Application Insights to track agent activity and system health.
+
+### Challenge 06: Simulate Anomalies
+Trigger simulated anomalies and observe how agents respond and coordinate remediation.
+
+## Technologies
+
+This solution leverages the following Azure services and tools:
+
+- Azure Durable Functions  
 - Azure Monitor  
+- Semantic Kernel  
+- Application Insights  
 - Python / TypeScript  
 
----
-
-## 📌 Project Goals
-
-- ✅ Autonomous cloud monitoring  
-- ✅ Early anomaly detection  
-- ✅ Cost and performance optimization  
-- ✅ Scalable agent-to-agent architecture  
-
----
-
-## 📂 Repository Structure
+## Repository Structure
 
 > *(Add your folders and file descriptions here, e.g., `/agents`, `/workflows`, `/docs`, etc.)*
 
----
+## Prerequisites
 
-## 🙌 Contributions
+- Active Azure Subscription with permissions to deploy resources.
+- Familiarity with Python or TypeScript.
+- Visual Studio Code with Azure Functions and Python extensions.
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+## Contributors
 
----
+- Esvin Ruiz  
 
-## 📄 License
+## License
 
 MIT License. See `LICENSE` file for details.
