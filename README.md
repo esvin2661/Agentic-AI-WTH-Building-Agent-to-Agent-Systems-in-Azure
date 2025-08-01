@@ -78,6 +78,41 @@ This solution leverages the following Azure services and tools:
 - Familiarity with Python or TypeScript.
 - Visual Studio Code with Azure Functions and Python extensions.
 
+### Virtual Environment Setup and Activation
+```bash
+# First time setup - create virtual environment
+python -m venv .venv
+
+# To activate the virtual environment:
+# On Windows (Command Prompt):
+.venv\Scripts\activate.bat
+# On Windows (PowerShell):
+.venv\Scripts\Activate.ps1
+# On Linux/MacOS:
+source .venv/bin/activate
+
+# You should see (.venv) at the start of your command prompt when activated
+# To verify activation:
+where python  # on Windows
+which python  # on Linux/MacOS
+
+# To deactivate when done:
+deactivate
+```
+
+### Install Required Packages
+After activating the virtual environment, install the necessary packages:
+```bash
+pip install azure-ai-projects
+pip install azure-ai-ml
+pip install azure-identity
+```
+If you encounter any issues:
+```bash
+pip uninstall azure-ai-projects
+pip install --upgrade azure-ai-projects
+```
+
 ## Contributors
 
 - Esvin Ruiz  
