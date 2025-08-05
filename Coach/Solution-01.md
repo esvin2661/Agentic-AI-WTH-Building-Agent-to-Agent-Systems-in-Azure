@@ -85,34 +85,31 @@ This will install:
 - Azure Core libraries
 - Authentication and storage dependencies
 
-### Step 7: Push Changes to GitHub
+### Step 7: Test Azure AI Foundry Connection
 
-1. Check the status of your changes:
-   ```bash
-   git status
+1. Create a test script (e.g., `example.py`):
+   ```python
+   from azure.identity import DefaultAzureCredential
+   from azure.ai.projects import AIProjectClient
+
+   def test_connection():
+       project = AIProjectClient(
+           endpoint="your_foundry_endpoint",  # Replace with your endpoint
+           credential=DefaultAzureCredential()
+       )
+       print("Successfully connected to Azure AI Foundry!")
    ```
 
-2. Add the new/modified files:
+2. Replace `your_foundry_endpoint` with your Azure AI Foundry endpoint URL
+   - Format: `https://your-project.services.ai.azure.com/`
+   - Find this in your Azure portal under your AI Foundry resource
+
+3. Run the test script:
    ```bash
-   git add .                    # To add all files
-   # OR
-   git add requirements.txt     # To add specific files
+   python src/example.py
    ```
 
-3. Commit your changes:
-   ```bash
-   git commit -m "Add project setup and dependencies"
-   ```
-
-4. Push to GitHub:
-   ```bash
-   git push origin <branch-name>    # Replace <branch-name> with your branch (e.g., main, set-up)
-   ```
-
-   If pushing for the first time:
-   ```bash
-   git push -u origin <branch-name>
-   ```
+A successful connection confirms your environment is properly set up!
 
 ## Next Steps
 
