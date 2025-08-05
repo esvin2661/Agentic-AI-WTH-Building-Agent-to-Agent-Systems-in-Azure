@@ -85,7 +85,24 @@ This will install:
 - Azure Core libraries
 - Authentication and storage dependencies
 
-### Step 7: Push Changes to GitHub
+### Step 7: Connect Azure AI Foundry SDK to the Foundry AI Endpoint
+1. Retrieve the Foundry endpoint from your project. 
+The format should look like: https://www.abc.com
+2.Create a client in your code using the Azure AI Foundry SDK.
+3.Connect the Azure AI Foundry SDK to the Foundry AI endpoint.
+This is what the expected code should look like:
+
+ ```
+from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+
+project = AIProjectClient(
+    endpoint="https://example .services.ai.azure.com/",  # Replace with your endpoint
+    credential=DefaultAzureCredential())
+```
+
+
+### Step 8: Push Changes to GitHub
 
 1. Check the status of your changes:
    ```bash
