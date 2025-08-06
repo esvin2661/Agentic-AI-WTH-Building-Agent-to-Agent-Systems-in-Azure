@@ -64,11 +64,11 @@ This will install all necessary packages including:
 ### Challenge 02: Deploy Core Agents
 Deploy the Monitor Agent, Anomaly Detector, Resource Optimizer, and Alert Manager using Durable Functions.
 
-### Challenge 03: Enable Agentic Communication
-Implement A2A protocols to allow agents to share state and delegate tasks.
-
-### Challenge 04: Integrate Semantic Kernel
+## Challenge 03: Integrate Semanti Kernel
 Use Semantic Kernel to enhance agent reasoning and decision-making.
+
+### Challenge 04: Enable Agentic Communication
+Implement A2A protocols to allow agents to share state and delegate tasks.
 
 ### Challenge 05: Monitor and Visualize
 Configure Azure Monitor and Application Insights to track agent activity and system health.
