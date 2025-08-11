@@ -18,10 +18,10 @@ class MonitorAgent(BaseAgent):
             "disk_io"
         ]
         self.thresholds = {
-            "cpu_usage": 80.0,    # 80% threshold
-            "memory_usage": 85.0,  # 85% threshold
-            "network_io": 90.0,    # 90% threshold
-            "disk_io": 85.0       # 85% threshold
+            "cpu_usage": 100,    # 80% threshold
+            "memory_usage": 100,  # 85% threshold
+            "network_io": 100,    # 90% threshold
+            "disk_io": 100       # 85% threshold
         }
 
     async def initialize(self) -> None:
