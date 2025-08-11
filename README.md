@@ -43,6 +43,24 @@ The architecture is built using:
 ### Challenge 01: Setup
 Prepare your development environment and Azure subscription.
 
+#### Development Environment Setup
+
+1. Create a Python virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+2. Install required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+This will install all necessary packages including:
+- Azure AI Foundry SDK and its components
+- Azure Core libraries
+- Required authentication and storage modules
+
 ### Challenge 02: Deploy Core Agents
 Deploy the Monitor Agent, Anomaly Detector, Resource Optimizer, and Alert Manager using Durable Functions.
 
