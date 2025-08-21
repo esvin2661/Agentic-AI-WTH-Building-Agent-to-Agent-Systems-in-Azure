@@ -31,9 +31,7 @@ Allocate memory-heavy processes
 Simulate disk reads/writes
 Example (Python):
 
-Python
-
-```
+```Python
 # Simulate CPU load
 import multiprocessing
 def cpu_stress():
