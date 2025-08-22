@@ -1,16 +1,11 @@
+<h1>Challenge 005 – Build a Chat Box Interface with Flask</h1>
 
-
-***
-
-## 💬 Challenge 005 – Build a Chat Box Interface with Flask
-
-### 🎯 Goal
+Goal
 
 Create a simple, interactive Flask-based chat interface that allows users to send queries and receive responses from your orchestrator agent. This chat box will serve as the front-end entry point for your multi-agent system.
 
-***
 
-## ✅ Step 1: Install Required Packages
+<h3> Step 1: Install Required Packages </h3>
 
 You don’t need a separate `requirements.txt` for this challenge. Just run the following commands in your terminal:
 
@@ -22,7 +17,7 @@ pip install semantic-kernel
 
 ***
 
-## ✅ Step 2: Create `chatbox.py`
+Step 2: Create `chatbox.py`
 
 This script launches the Flask app and connects to your orchestrator agent:
 
@@ -50,7 +45,7 @@ if __name__ == "__main__":
 
 ***
 
-## ✅ Step 3: Create `orchestrator.py`
+Step 3: Create `orchestrator.py`
 
 This file contains the logic to route user queries to the appropriate agent. You can expand this later to include real agent calls.
 
@@ -70,13 +65,13 @@ def handle_user_query(query):
 
 ***
 
-## ✅ Step 4: Create the Chat UI
+Step 4: Create the Chat UI
 
 Create a folder named `templates` and inside it, add a file called `chat.html`:
 
 ***
 
-## ✅ Step 5: Run the Chat Box
+Step 5: Run the Chat Box
 
 Start the Flask app:
 
@@ -92,8 +87,9 @@ You’ll see a chat interface where you can type queries and receive responses f
 
 ***
 
-## ✅ Challenge 005 Complete!
+Challenge 005 Complete!
 
 You now have a working chat interface that connects to your orchestrator agent and routes queries to your core agents. This sets the stage for **Challenge 006: Monitor and Visualize**.
 
 ***
+
