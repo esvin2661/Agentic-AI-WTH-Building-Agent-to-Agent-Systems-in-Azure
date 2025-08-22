@@ -11,7 +11,7 @@ Optionally use Semantic Kernel or Autogen v2 for planning
 You’ve already started this in your orchestrator. Let’s make it more dynamic by allowing agents to respond to each other’s messages.
 Update agent_orchestrator.py:
 
-```
+```Python
 def orchestratedynamic(self, userinput):
     thread = self.createthread()
 
@@ -40,7 +40,7 @@ def orchestratedynamic(self, userinput):
 
  ✅ Step 2: Update Flask App to Use Dynamic Orchestration
 In app.py, update the handler:
-```
+```Python 
 async def handleuserinput(userinput):
     messages = orchestrator.orchestratedynamic(user_input)
     return [msg.content for msg in messages]
@@ -48,15 +48,15 @@ async def handleuserinput(userinput):
 
  ✅ Step 3: Add Agent Role Awareness (Optional)
 You can tag each message with the agent’s name or role for clarity:
-```
+```Python
 return [f"{msg.role}: {msg.content}" for msg in messages]
 ```
  ✅ Step 4: (Optional) Use Semantic Kernel for Planning
 If you want to use Semantic Kernel to decide which agent to trigger:
-```
+```Python
 from semantickernel import Kernel
 ```
-```
+```Python 
 kernel = Kernel()
 plan = kernel.createplan("Detect and respond to system anomalies")
 for step in plan.steps:
@@ -65,3 +65,4 @@ for step in plan.steps:
 ```
 
  ✅ That’s it! You now have a working Agent-to-Agent Communication Layer that dynamically routes messages and coordinates actions.
+
