@@ -85,6 +85,11 @@ This will install:
 - Azure Core libraries
 - Authentication and storage dependencies
 
+
+### Step 7: Connect to Azure: 
+   1. Log in to azure account: www.azure.com
+   2. run command AZ login in terminal
+
 ### Step 7: Test Azure AI Foundry Connection
 
 1. Create a test script (e.g., `example.py`):
