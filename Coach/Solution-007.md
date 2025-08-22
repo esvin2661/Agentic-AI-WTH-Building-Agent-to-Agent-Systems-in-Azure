@@ -1,10 +1,12 @@
 
-⚠️ Challenge 007: Simulate Anomalies (Using Real Azure Data When No Anomalies Exist)
-🎯 Goal:
-Use real Azure metrics and inject controlled triggers to simulate anomalies when none are naturally present.
+<h1>Challenge 007: Simulate Anomalies (Using Real Azure Data When No Anomalies Exist </h1>
 
-✅ Step-by-Step Strategy
-🧠 Step 1: Confirm Real-Time Monitoring Is Active
+Goal: Use real Azure metrics and inject controlled triggers to simulate anomalies when none are naturally present.
+
+Step-by-Step Strategy
+
+1: Confirm Real-Time Monitoring Is Active 
+
 Your Monitor Agent is already configured to:
 
 Collect metrics like CPU, memory, and disk I/O
@@ -13,7 +15,7 @@ Feed data to the Anomaly Detector
 Challenge 002 Build and Deploy Core Agents 1
 Ensure it's running and connected to Azure Monitor.
 
-🧪 Step 2: Use Time-Based or Threshold-Based Triggers
+Step 2: Use Time-Based or Threshold-Based Triggers
 From your Challenge 003 Build and Deploy Core Agents and Challenge 007 Simulate Anomalies 1:
 
 Challenge 003 Build and Deploy Core Agents+1
@@ -23,7 +25,7 @@ Memory < 2GB
 Disk I/O > 30MB/sec
 This allows your Anomaly Detector to flag real but non-critical spikes.
 
-🧪 Step 3: Inject Controlled Load (Optional)
+Step 3: Inject Controlled Load (Optional)
 If you want to force anomalies:
 
 Run a CPU-intensive script on your VM
@@ -42,7 +44,7 @@ for _ in range(multiprocessing.cpu_count()):
     multiprocessing.Process(target=cpu_stress).start()
 ```
 
-📊 Step 4: Observe Agent Responses
+Step 4: Observe Agent Responses
 Your agents should:
 
 Detect the anomaly
@@ -54,11 +56,11 @@ Use your dashboard from Challenge 006 to visualize the flow.
 
 Challenge 006 Monitor and Visualize
 
-🧠 Step 5: Document Edge Cases
+Step 5: Document Edge Cases
 From your project breakdown:cloud
 
 Note which anomalies are missed
 Track how agents recover
 Log alert escalation paths
 
-✅ You’ve now completed Challenge 007 using real Azure metrics with controlled triggers to simulate anomalies.
+You’ve now completed Challenge 007 using real Azure metrics with controlled triggers to simulate anomalies.
