@@ -2,7 +2,7 @@
 🎯 Goal:
 Track when anomalies are detected and how they are resolved by your agents, using logs and visual summaries.
 
- ✅ Step 1: Log Anomalies and Resolutions
+ Step 1: Log Anomalies and Resolutions
 Update each agent to log its actions to a local file or database.
 Example for Anomaly Detector:
 
@@ -20,14 +20,14 @@ def log_resolution(action):
     logging.info(f"Resolution Applied: {action}")
 ```
 
- ✅ Step 2: Structure the Log Format
+ Step 2: Structure the Log Format
 Use a consistent format like:
 ```
 [2025-08-21 14:32:10] Anomaly Detected: CPU = 92%
 [2025-08-21 14:32:15] Resolution Applied: Scaled VM to Standard_DS2_v2
 ```
 
- ✅ Step 3: Visualize with Streamlit (Optional)
+ Step 3: Visualize with Streamlit (Optional)
 Create a simple dashboard to display logs:
 
 ```
@@ -46,11 +46,12 @@ Run with:
 streamlit run dashboard.py
 ```
 
- ✅ Step 4: (Optional) Store Logs in Azure Table or Cosmos DB
+ Step 4: (Optional) Store Logs in Azure Table or Cosmos DB
 If you want cloud-based tracking:
 
 Use azure-data-tables or azure-cosmos SDK 
 Store each anomaly and resolution as a record 
 Query and visualize with Power BI or Azure Workbooks 
 
- ✅ That’s it! You now have a lightweight system to track and visualize anomalies and resolutions.
+That’s it! You now have a lightweight system to track and visualize anomalies and resolutions.
+
