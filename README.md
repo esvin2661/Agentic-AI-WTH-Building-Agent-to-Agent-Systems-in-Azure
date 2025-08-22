@@ -19,6 +19,7 @@ In this hack, you will:
 - Optimize cloud resource usage through intelligent scaling.
 - Enable agent-to-agent communication for distributed decision-making.
 - Monitor and visualize system behavior using Azure Monitor and Application Insights.
+- Build Web Application to communicate with Agents.
 
 ## Solution Architecture
 
@@ -93,8 +94,8 @@ This solution leverages the following Azure services and tools:
 ## Prerequisites
 
 - Active Azure Subscription with permissions to deploy resources.
-- Familiarity with Python or TypeScript.
-- Visual Studio Code with Azure Functions and Python extensions.
+- Familiarity with Python and Flask.
+- Familiarity with Github and Github codespace
 
 ## Contributors
 
