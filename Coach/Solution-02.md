@@ -1,7 +1,7 @@
 
 Set up Semantic Kernel in Python so you can orchestrate your agents and enable intelligent planning and task execution.
 
- ✅ Step 1: Make Sure You’re in Your Virtual Environment
+Step 1: Make Sure You’re in Your Virtual Environment
 If you’re not already in your project folder and virtual environment:
 
 ```Bash
@@ -10,11 +10,11 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 You should see (.venv) in your terminal prompt.
 
- ✅ Step 2: Install Semantic Kernel (if not already installed)
+ Step 2: Install Semantic Kernel (if not already installed)
  ```Bash
 pip install semantic-kernel
 ```
- ✅ Step 3: Create a .env File for Your API Keys
+Step 3: Create a .env File for Your API Keys
 This file will store your OpenAI or Azure OpenAI credentials securely.
 
 In your project root, create a file named .env 
@@ -29,7 +29,7 @@ OPENAIMODEL_NAME=gpt-35-turbo
 📝 Tip: Never commit .env to GitHub. Add it to .gitignore.
 
 
- ✅ Step 4: Create a Basic Kernel Script
+Step 4: Create a Basic Kernel Script
 Let’s test that Semantic Kernel is working.
 Create a file called test_kernel.py:
 ```Python
@@ -67,7 +67,7 @@ import asyncio
 asyncio.run(run())
   ```
 
- ✅ Step 5: Run the Script
+ Step 5: Run the Script
 python test_kernel.py
 You should see a response from the model like:
 
@@ -76,12 +76,13 @@ You should see a response from the model like:
 ```
 
 
- ✅ Step 6: Create a skills/ Folder (Optional but Recommended)
+ Step 6: Create a skills/ Folder (Optional but Recommended)
 This is where you’ll store your custom plugins and skills.
 ```Bash
 mkdir skills
 ```
 You can later add folders like MonitorSkill, AnomalySkill, etc., each with a config.json and skprompt.txt.
 
- ✅ Challenge 002 Complete!
+Challenge 002 Complete!
+
 
