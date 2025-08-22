@@ -1,4 +1,4 @@
-Challenge 003.1: Build the Anomaly Detector Agent (Real Azure Metrics)
+<h1> Challenge 003.1: Build the Anomaly Detector Agent (Real Azure Metrics) </h1>
 Goal:Build an agent that monitors real-time Azure metrics and detects anomalies in:
 
 CPU Usage 
@@ -7,7 +7,10 @@ Disk I/O
 
  Step 1: Install Required Python Packages
 In your virtual environment:
+
+```bash
 pip install azure-monitor-query azure-identity python-dotenv
+```
 
 Step 2: Set Up Your .env File
 In your project root, create or update .env with:
@@ -113,9 +116,9 @@ We are building the Resource Optimizer Agent next
 
 2. Resource Optimizer Agent: 
 
- ⚙️ Challenge 003.2: Build the Resource Optimizer Agent (Real Azure Integration)
-🎯 Goal:
-Respond to real anomaly threads (e.g., high CPU, low memory, high disk I/O) and simulate or apply optimizations using Azure APIs.
+Challenge 003.2: Build the Resource Optimizer Agent (Real Azure Integration)
+
+Goal: Respond to real anomaly threads (e.g., high CPU, low memory, high disk I/O) and simulate or apply optimizations using Azure APIs.
 
 Step 1: Install Azure Management SDKs
 These will allow your agent to interact with Azure resources:
@@ -213,9 +216,9 @@ Would you like to move on to building the 🚨 Alert Manager Agent next?
 
 3. Copilot Alert Manager Agent: 
 
- 🚨 Challenge 003.3: Build the Alert Manager Agent (Live Azure Integration)
-🎯 Goal:
-Monitor real anomaly and optimization threads, and send alerts to stakeholders using Azure Monitor’s alerting and action group infrastructure.
+Challenge 003.3: Build the Alert Manager Agent (Live Azure Integration)
+
+Goal:Monitor real anomaly and optimization threads, and send alerts to stakeholders using Azure Monitor’s alerting and action group infrastructure.
 
 Step 1: Confirm You’re in an Azure Monitor Action Group
 You’re already part of the AGOwner action group, which means you’ll receive notifications triggered by Azure Monitor alerts1.
@@ -264,8 +267,7 @@ class AlertManagerAgent(Agent):
 ```
         # Simulate sending alert (real implementation would use Azure Monitor alert rule)
 
-
-🔧 Note: Azure Monitor alerts are typically configured via the Azure Portal or ARM templates. This agent simulates the alert logic and can be extended to trigger real alerts via REST API or Logic Apps.
+Note: Azure Monitor alerts are typically configured via the Azure Portal or ARM templates. This agent simulates the alert logic and can be extended to trigger real alerts via REST API or Logic Apps.
 
 
 Step 5: Register the Agent
@@ -385,5 +387,6 @@ from semantickernel import Kernel
 kernel = Kernel()
 plan = kernel.createplan("Detect and respond to system anomalies")
 ```
+
 
 
