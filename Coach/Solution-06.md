@@ -6,7 +6,7 @@ Track when anomalies are detected and how they are resolved by your agents, usin
 Update each agent to log its actions to a local file or database.
 Example for Anomaly Detector:
 
-```
+```python
 import logging
 
 logging.basicConfig(filename='agentlog.txt', level=logging.INFO)
@@ -30,7 +30,7 @@ Use a consistent format like:
  Step 3: Visualize with Streamlit (Optional)
 Create a simple dashboard to display logs:
 
-```
+```Python
 import streamlit as st
 
 st.title("Anomaly & Resolution Tracker")
@@ -54,4 +54,5 @@ Store each anomaly and resolution as a record
 Query and visualize with Power BI or Azure Workbooks 
 
 That’s it! You now have a lightweight system to track and visualize anomalies and resolutions.
+
 
