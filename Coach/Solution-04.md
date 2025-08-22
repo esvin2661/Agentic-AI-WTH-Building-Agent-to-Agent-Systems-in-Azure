@@ -1,13 +1,15 @@
 
 🔗 Challenge 004: Enable Agentic Communication (A2A)
 
-🎯 Goal:Build a communication layer that allows agents to:
+Goal:Build a communication layer that allows agents to:
+
 Share context via threads 
 Pass messages between each other 
 Coordinate actions based on shared memory 
 Optionally use Semantic Kernel or Autogen v2 for planning 
 
- ✅ Step 1: Use Shared Threads for Context
+Step 1: Use Shared Threads for Context
+
 You’ve already started this in your orchestrator. Let’s make it more dynamic by allowing agents to respond to each other’s messages.
 Update agent_orchestrator.py:
 
@@ -38,7 +40,8 @@ def orchestratedynamic(self, userinput):
 ```
 
 
- ✅ Step 2: Update Flask App to Use Dynamic Orchestration
+ Step 2: Update Flask App to Use Dynamic Orchestration
+ 
 In app.py, update the handler:
 ```Python 
 async def handleuserinput(userinput):
@@ -46,13 +49,16 @@ async def handleuserinput(userinput):
     return [msg.content for msg in messages]
 ```
 
- ✅ Step 3: Add Agent Role Awareness (Optional)
+Step 3: Add Agent Role Awareness (Optional)
+
 You can tag each message with the agent’s name or role for clarity:
 ```Python
 return [f"{msg.role}: {msg.content}" for msg in messages]
 ```
- ✅ Step 4: (Optional) Use Semantic Kernel for Planning
+Step 4: (Optional) Use Semantic Kernel for Planning
+
 If you want to use Semantic Kernel to decide which agent to trigger:
+
 ```Python
 from semantickernel import Kernel
 ```
@@ -64,5 +70,6 @@ for step in plan.steps:
     orchestrator.sendtoagent(thread, step.plugin_name, step.description)
 ```
 
- ✅ That’s it! You now have a working Agent-to-Agent Communication Layer that dynamically routes messages and coordinates actions.
+That’s it! You now have a working Agent-to-Agent Communication Layer that dynamically routes messages and coordinates actions.
+
 
