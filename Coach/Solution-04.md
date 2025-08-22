@@ -1,5 +1,4 @@
-
-🔗 Challenge 004: Enable Agentic Communication (A2A)
+<h1> Challenge 004: Enable Agentic Communication (A2A) </h1>
 
 Goal:Build a communication layer that allows agents to:
 
@@ -71,5 +70,6 @@ for step in plan.steps:
 ```
 
 That’s it! You now have a working Agent-to-Agent Communication Layer that dynamically routes messages and coordinates actions.
+
 
 
