@@ -37,30 +37,12 @@ The architecture is built using:
 - Durable Functions for orchestrating agent workflows.
 - Semantic Kernel for intelligent decision-making.
 - Azure Monitor and Application Insights for observability.
-- Python and TypeScript for implementation.
+- Python and Flask for implementation.
 
 ## Challenges
 
 ### Challenge 01: Setup
 Prepare your development environment and Azure subscription.
-
-#### Development Environment Setup
-
-1. Create a Python virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-2. Install required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-This will install all necessary packages including:
-- Azure AI Foundry SDK and its components
-- Azure Core libraries
-- Required authentication and storage modules
 
 ### Challenge 02: Deploy Core Agents
 Deploy the Monitor Agent, Anomaly Detector, Resource Optimizer, and Alert Manager using Durable Functions.
@@ -85,7 +67,7 @@ This solution leverages the following Azure services and tools:
 - Azure Monitor  
 - Semantic Kernel  
 - Application Insights  
-- Python / TypeScript  
+- Python / Flask  
 
 ## Repository Structure
 
