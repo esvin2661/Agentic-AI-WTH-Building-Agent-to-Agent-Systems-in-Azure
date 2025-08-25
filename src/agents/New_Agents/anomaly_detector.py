@@ -1,7 +1,9 @@
 import os
-import importlib
 from datetime import timedelta
 from dotenv import load_dotenv, find_dotenv
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 
 # Load .env using find_dotenv so it works even when the script is run from a different cwd
 dotenv_path = find_dotenv()
@@ -43,46 +45,13 @@ for name in _apikey_aliases:
         os.environ["AZURE_AI_FOUNDRY_API_KEY"] = v
         break
 
-# Resolve MetricsQueryClient and MetricAggregationType across package versions
-def _resolve_class(possible_modules, class_name):
-    for mod_path in possible_modules:
-        try:
-            mod = importlib.import_module(mod_path)
-            cls = getattr(mod, class_name, None)
-            if cls:
-                return cls
-        except Exception:
-            continue
-    return None
-
-MetricsQueryClient = _resolve_class([
-    "azure.monitor.query",
-    "azure.monitor.query.metrics",
-    "azure.monitor.query._metrics",
-    "azure.monitor.query._client",
-    "azure.monitor.query._generated.metrics_client",
-], "MetricsQueryClient")
-
-MetricAggregationType = _resolve_class([
-    "azure.monitor.query.models",
-    "azure.monitor.query",
-    "azure.monitor.query._models",
-], "MetricAggregationType")
-
-if MetricsQueryClient is None:
-    try:
-        import azure.monitor.query as _amq
-        available = [n for n in dir(_amq) if not n.startswith("__")]
-    except Exception:
-        available = None
-    msg = "MetricsQueryClient not found in azure.monitor.query; metrics functionality will be disabled."
-    if available is not None:
-        msg += f" Available names in azure.monitor.query: {available}"
-    print(msg)
-
-if MetricAggregationType is None:
-    class MetricAggregationType:
-        AVERAGE = "Average"
+# Import MetricsQueryClient and MetricAggregationType
+try:
+    from azure.monitor.query import MetricsQueryClient, MetricAggregationType
+except ImportError:
+    MetricsQueryClient = None
+    MetricAggregationType = None
+    print("MetricsQueryClient not found in azure.monitor.query; metrics functionality will be disabled.")
 
 # Fallback for environments without azure.ai.agents
 try:
@@ -103,19 +72,16 @@ except Exception:
 
 class AnomalyDetectorAgent(Agent):
     def __init__(self):
-        # Required attributes for Foundry registration
         self.name = "AnomalyDetectorAgent"
         self.model = "gpt-35-turbo"
         self.instructions = "Detect anomalies in Azure metrics like CPU, memory, and disk I/O."
-        self.tools = []  # Add OpenApiTool instances here if needed
+        self.tools = []
 
-        # Initialize base agent
         try:
             super().__init__(name=self.name)
         except TypeError:
             super().__init__()
 
-        # Metrics client (optional)
         try:
             from azure.identity import DefaultAzureCredential
             self.client = MetricsQueryClient(credential=DefaultAzureCredential()) if MetricsQueryClient else None
@@ -123,25 +89,39 @@ class AnomalyDetectorAgent(Agent):
             self.client = None
             print("Warning: could not instantiate MetricsQueryClient; metrics disabled.")
 
-        # Build resource ID based on resource type
         subscription = os.getenv("AZURESUBSCRIPTIONID", "")
         rg = os.getenv("AZURERESOURCEGROUP", "")
         resource = os.getenv("AZURERESOURCENAME", "")
-        resource_type = os.getenv("AZURERESOURCETYPE", "webapp").lower()
+        resource_type = (os.getenv("AZURERESOURCETYPE", "webapp") or "").strip().lower()
 
-        if resource_type == "webapp":
-            self.resource_id = (
-                f"/subscriptions/{subscription}/resourceGroups/{rg}"
-                f"/providers/Microsoft.Web/sites/{resource}"
-            )
-        elif resource_type == "foundry":
-            self.resource_id = (
-                f"/subscriptions/{subscription}/resourceGroups/{rg}"
-                f"/providers/Microsoft.CognitiveServices/accounts/{resource}"
-            )
+        # If the user provided a full resource id, use it directly
+        if resource and resource.strip().lower().startswith("/subscriptions/"):
+            self.resource_id = resource.strip()
         else:
-            self.resource_id = ""
-            print("Unsupported resource type specified in AZURERESOURCETYPE.")
+            # Accept a few common aliases for resource types
+            if resource_type in ("webapp", "web_app", "app", "site"):
+                self.resource_id = (
+                    f"/subscriptions/{subscription}/resourceGroups/{rg}"
+                    f"/providers/Microsoft.Web/sites/{resource}"
+                )
+            elif resource_type in ("foundry", "cognitive", "ai", "aiplatform"):
+                self.resource_id = (
+                    f"/subscriptions/{subscription}/resourceGroups/{rg}"
+                    f"/providers/Microsoft.AIPlatform/accounts/{resource}"
+                )
+            # Accept provider-style or longer forms like 'microsoft.compute/virtualmachines'
+            elif resource_type in ("virtualmachine", "virtual_machine", "vm") or any(k in resource_type for k in ("compute", "virtualmach", "microsoft.compute")):
+                # Virtual machine resource id
+                self.resource_id = (
+                    f"/subscriptions/{subscription}/resourceGroups/{rg}"
+                    f"/providers/Microsoft.Compute/virtualMachines/{resource}"
+                )
+            else:
+                self.resource_id = ""
+                print(f"Unsupported resource type specified in AZURERESOURCETYPE: '{resource_type}'.")
+
+        # Debug: show resolved resource id
+        print(f"Resolved resource_id: {self.resource_id}")
 
         metrics_env = os.getenv("AZUREMETRICS", "")
         self.metrics = [m.strip() for m in metrics_env.split(",") if m.strip()]
@@ -150,8 +130,8 @@ class AnomalyDetectorAgent(Agent):
         if not self.client:
             return None
         try:
-            response = self.client.query_resource(
-                resource_id=self.resource_id,
+            response = self.client.query(
+                resource_uri=self.resource_id,
                 metric_names=[metric_name],
                 timespan=timedelta(minutes=5),
                 aggregations=[MetricAggregationType.AVERAGE],
@@ -162,10 +142,18 @@ class AnomalyDetectorAgent(Agent):
                         if getattr(data, "average", None) is not None:
                             return data.average
         except Exception as e:
-            print(f"Error querying metric {metric_name}: {e}")
+            # Provide clearer message for authorization errors which are common when
+            # DefaultAzureCredential is missing proper RBAC assignments on the target
+            msg = str(e)
+            if "AuthorizationFailed" in msg or "does not have authorization" in msg:
+                print(f"Authorization error querying metric {metric_name}: {e}")
+                print("Hint: the identity used by DefaultAzureCredential needs 'Microsoft.Insights/metrics/read' permission on the resource (assign Monitoring Reader/Metric Reader role or similar). If you just granted access, refresh your credentials (re-run 'az login').")
+            else:
+                print(f"Error querying metric {metric_name}: {e}")
         return None
 
     def run(self, thread, message):
+        print(f"Checking metrics: {self.metrics}")
         anomalies = []
         for metric in self.metrics:
             value = self.get_latest_metric(metric)
@@ -187,3 +175,11 @@ class AnomalyDetectorAgent(Agent):
                 print(alert)
         else:
             print("No anomalies detected.")
+
+        print("AnomalyDetectorAgent run completed.")
+
+if __name__ == "__main__":
+    agent = AnomalyDetectorAgent()
+    thread = Thread()
+    message = Message(content="Run anomaly check", role="user")
+    agent.run(thread, message)
