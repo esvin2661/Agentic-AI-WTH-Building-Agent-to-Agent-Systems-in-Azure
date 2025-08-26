@@ -303,6 +303,8 @@ Simulated alert sent: 🚨 Alert triggered: ⚠️ Optimization failed due to hi
 The Alert Manager Agent is now live and ready to respond to real anomaly and optimization events.
 We are building the 🔗 Agent-to-Agent Communication Layer next
 
+The alert manager can use sample data for the time being, We will connect it to the monitor agent to receive real live data once we incorporate A2A protocol on the next challenge. 
+
 References
 [1] You’re now in the AGOwner action group
 
@@ -387,6 +389,7 @@ from semantickernel import Kernel
 kernel = Kernel()
 plan = kernel.createplan("Detect and respond to system anomalies")
 ```
+
 
 
 
