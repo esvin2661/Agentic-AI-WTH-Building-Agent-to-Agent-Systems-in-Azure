@@ -41,23 +41,21 @@ The architecture is built using:
 
 ## Challenges
 
-### Challenge 01: Setup
+### Challenge 001: Setup
 Prepare your development environment and Azure subscription.
 
-### Challenge 02: Deploy Core Agents
-Deploy the Monitor Agent, Anomaly Detector, Resource Optimizer, and Alert Manager using Durable Functions.
 
-### Challenge 03: Enable Agentic Communication
-Implement A2A protocols to allow agents to share state and delegate tasks.
 
-### Challenge 04: Integrate Semantic Kernel
-Use Semantic Kernel to enhance agent reasoning and decision-making.
+### Challenge 003: Build and Deploy Core Agents
 
-### Challenge 05: Monitor and Visualize
-Configure Azure Monitor and Application Insights to track agent activity and system health.
+### Challenge 004: Enable Agentic Communication (A2A)
 
-### Challenge 06: Simulate Anomalies
-Trigger simulated anomalies and observe how agents respond and coordinate remediation.
+### Challenge 005: Orchestrating Agent Collaboration with Semantic Kernel 
+
+### Challenge 006: Monitor and Visualize
+
+### Challenge 007: Simulate Anomalies  
+
 
 ## Technologies
 
@@ -67,7 +65,7 @@ This solution leverages the following Azure services and tools:
 - Azure Monitor  
 - Semantic Kernel  
 - Application Insights  
-- Python / Flask  
+
 
 ## Repository Structure
 

@@ -86,36 +86,6 @@ This will install:
 - Authentication and storage dependencies
 
 
-### Step 7: Connect to Azure: 
-   1. Log in to azure account: www.azure.com
-   2. run command AZ login in terminal
-
-### Step 7: Test Azure AI Foundry Connection
-
-1. Create a test script (e.g., `example.py`):
-   ```python
-   from azure.identity import DefaultAzureCredential
-   from azure.ai.projects import AIProjectClient
-
-   def test_connection():
-       project = AIProjectClient(
-           endpoint="your_foundry_endpoint",  # Replace with your endpoint
-           credential=DefaultAzureCredential()
-       )
-       print("Successfully connected to Azure AI Foundry!")
-   ```
-
-2. Replace `your_foundry_endpoint` with your Azure AI Foundry endpoint URL
-   - Format: `https://your-project.services.ai.azure.com/`
-   - Find this in your Azure portal under your AI Foundry resource
-
-3. Run the test script:
-   ```bash
-   python src/example.py
-   ```
-
-A successful connection confirms your environment is properly set up!
-
 ## Next Steps
 
 Once setup is complete, you can proceed to Challenge 02 to begin working with the Azure AI Foundry agents.
