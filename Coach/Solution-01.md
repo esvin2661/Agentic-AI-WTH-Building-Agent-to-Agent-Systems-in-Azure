@@ -85,6 +85,7 @@ This will install:
 - Azure Core libraries
 - Authentication and storage dependencies
 
+
 ## Next Steps
 
 Once setup is complete, you can proceed to Challenge 02 to begin working with the Azure AI Foundry agents.
