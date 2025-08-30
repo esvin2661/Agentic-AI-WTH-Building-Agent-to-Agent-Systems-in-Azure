@@ -37,3 +37,34 @@ def orchestratedynamic(self, userinput, use_semantic_kernel=False):
     # Return all messages with role awareness
     messages = self.getthreadmessages(thread)
     return [f"{msg.role}: {msg.content}" for msg in messages]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
