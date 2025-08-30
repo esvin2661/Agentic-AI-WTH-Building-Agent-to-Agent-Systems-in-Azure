@@ -19,6 +19,7 @@ In this hack, you will:
 - Optimize cloud resource usage through intelligent scaling.
 - Enable agent-to-agent communication for distributed decision-making.
 - Monitor and visualize system behavior using Azure Monitor and Application Insights.
+- Build Web Application to communicate with Agents.
 
 ## Solution Architecture
 
@@ -36,32 +37,14 @@ The architecture is built using:
 - Durable Functions for orchestrating agent workflows.
 - Semantic Kernel for intelligent decision-making.
 - Azure Monitor and Application Insights for observability.
-- Python and TypeScript for implementation.
+- Python and Flask for implementation.
 
 ## Challenges
 
 ### Challenge 001: Setup
 Prepare your development environment and Azure subscription.
 
-#### Development Environment Setup
 
-1. Create a Python virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-2. Install required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-This will install all necessary packages including:
-- Azure AI Foundry SDK and its components
-- Azure Core libraries
-- Required authentication and storage modules
-
-### Challenge 002: Semantic Kernel Setup & Configuration
 
 ### Challenge 003: Build and Deploy Core Agents
 
@@ -82,7 +65,7 @@ This solution leverages the following Azure services and tools:
 - Azure Monitor  
 - Semantic Kernel  
 - Application Insights  
-- Python 
+
 
 ## Repository Structure
 
@@ -91,8 +74,8 @@ This solution leverages the following Azure services and tools:
 ## Prerequisites
 
 - Active Azure Subscription with permissions to deploy resources.
-- Familiarity with Python or TypeScript.
-- Visual Studio Code with Azure Functions and Python extensions.
+- Familiarity with Python and Flask.
+- Familiarity with Github and Github codespace
 
 ## Contributors
 
